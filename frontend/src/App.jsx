@@ -10,9 +10,12 @@ import NotFound from './pages/NotFound'
 import Order from './pages/Order'
 import Booking from './pages/Booking'
 import Menu from './pages/Menu'
+import AdminPage from './Admin/AdminPage'
 import './app.css'
 import { useContext } from "react";
 import  { Context } from './context/Context'
+import Tables from './Admin/Tables'
+import AddTable from './Admin/AddTable'
 
 function App() {
   const { user } = useContext(Context)
@@ -31,6 +34,9 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/booking' element={user ? <Booking/> : <Login />}/>
         <Route path='/menu' element={<Menu/>}/>
+        <Route path='/admin' element={<AdminPage/>}/>
+        <Route path='/admin/tables' element={<Tables/>}/>
+        <Route path='/admin/add-table' element={<AddTable/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
       

@@ -1,4 +1,5 @@
 import {useForm} from 'react-hook-form'
+import './addTable.css'
 import {yupResolver} from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import {storage} from '../firebase'
@@ -46,7 +47,7 @@ function AddTable() {
         {errors.imageurl && <p>{errors.imageurl.message}</p>}
         <button type='submit'>add </button>
     </form>
-
+    
    
 </div>
   )

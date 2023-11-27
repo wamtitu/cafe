@@ -17,7 +17,7 @@ const Footer = () => {
           
 
         </div>
-        <p>Copyright® of Japheth Cheseret</p>
+        <p>Copyright® of Hcoffee</p>
       </footer>
     </div>
   )

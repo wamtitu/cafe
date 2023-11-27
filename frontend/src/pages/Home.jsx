@@ -1,6 +1,7 @@
 import './Home.css'
 import img from '../images/feature-image.webp'
 import { Link } from 'react-router-dom'
+import AddTable from '../Admin/AddTable';
 
 const Home = () => {
   return (

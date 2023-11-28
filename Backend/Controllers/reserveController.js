@@ -7,12 +7,13 @@ await pool.connect();
 export const getAvailableTables = async (req, res) => {
     try {
         const result = await pool.request()
-        .query('SELECT r.tableNumber FROM reserve r LEFT JOIN reservation rs ON r.tableNumber = rs.tableNumber WHERE rs.tableNumber IS NULL;');
-      const tableNumbers = []
-     result.recordset.forEach(table=>{
-      tableNumbers.push({tableNumber: table.tableNumber});
-     })
-    res.json({tables: tableNumbers})
+        .query('SELECT r.tableId, r.tableNumber, r.name, r.description, r.images FROM reserve r LEFT JOIN reservation rs ON r.tableNumber = rs.tableNumber WHERE rs.tableNumber IS NULL;');
+    //   const tableNumbers = []
+    //  result.recordset.forEach(table=>{
+    //   tableNumbers.push({tableNumber: table.tableNumber});
+    //  })
+    const data = result.recordset;
+    res.json({data})
         // Send the available tables as the response
       } catch (error) {
         console.error('Error:', error);
@@ -22,3 +23,26 @@ export const getAvailableTables = async (req, res) => {
         sql.close();
       }
   };
+  export const addTable = async (req, res) => {
+ 
+
+    try {
+      const {name, description, images, tableNumber} = req.body;
+     
+  
+      await pool
+        .request()
+        .input('name', sql.VarChar, name)
+        .input('description', sql.VarChar, description)
+        .input('images', sql.VarChar, images)
+        .input('tableNumber', sql.VarChar, tableNumber)
+        .query(
+          'INSERT INTO reserve(name, description, images, tableNumber) VALUES (@name, @description, @images, @tableNumber)'
+        );
+    }
+        catch (error) {
+          res.status(400).json({ message: error.message });
+        } finally {
+          sql.close();
+        }
+    };

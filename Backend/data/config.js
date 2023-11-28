@@ -13,15 +13,15 @@ assert(port,'port is required');
 
 
 const config ={
-    port: port,
+    port: 5000,
     sql:{
-        user: sqlUser,
-        password: sqlPwd,
-        server: sqlServer,
-        database: sqlDb,
+        user: "sa",
+        password: "Wamutitu#1",
+        server: "localhost",
+        database: "MyCAFE",
         options: {
             encryt: true,
-            trustServerCertificate: false
+            trustServerCertificate: true
         }
 
     },

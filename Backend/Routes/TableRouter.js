@@ -6,7 +6,7 @@ import { createReservation, deleteReservation, getAllReservations, getReservatio
 const routes = (app) => {
     //people routes
     app.route('/reservation')
-        .get(loginRequired, getAllReservations)
+        .get(getAllReservations)
         .post(loginRequired,createReservation );
 
     app.route('/reservation/:id')

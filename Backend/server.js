@@ -42,13 +42,6 @@ reserveRouter(app);
 CommentRouter(app);
 
 
-
-
-
-app.get('/',(reg,res)=>{
-    res.send("hello buddy😎")
-})
-app.get('/users', getAllUsers)
 app.listen(config.port || 5000 ,()=>{
-    console.log('server is running ')
+    console.log(`server is running on ${config.port}`)
 })

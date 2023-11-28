@@ -30,7 +30,7 @@ const Booking = () => {
 
           }
         });
-        setAvailableTables(response.data.tables);
+        setAvailableTables(response.data.data);
      }
      useEffect(()=>{
       fetchTables()

@@ -8,8 +8,13 @@ import  { Context } from '../context/Context'
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false)
   const navigate = useNavigate()
-  const { user, dispatch } = useContext(Context);
-  // const user = localStorage.getItem("user")
+  const { user} = useContext(Context);
+  console.log(user.role);
+  // const user1 = JSON.parse(user);
+  // console.log(user1.email)
+//   const userString = localStorage.getItem("user");
+// const user = userString ? JSON.parse(userString) : null;
+// console.log(user)
     const handleLogout = () => {
       // dispatch({ type: "LogOut"  });
       localStorage.clear()
@@ -28,6 +33,13 @@ const Header = () => {
         <Link to='/booking'>Reservation</Link>
         <Link to='/about'>About</Link>
         <Link to='/contact'>Testimonials</Link>
+        {user && user.role === "Admin" && (
+        <div>
+          {/* <Link to='/admin/add-table'>addTable</Link> */}
+          <Link to='/admin/tables'>Tables</Link>
+          <Link to='/admin'>Admin</Link>
+        </div>
+      )}
       </div>
       <div className="blog__sign"> 
       {!user && (
@@ -38,7 +50,7 @@ const Header = () => {
       {user && (
         <button onClick={handleLogout} style={{ color: "yellow", background: "transparent",border: "none", outline: "none", height: '30px',width: '100%' }}><FaSignOutAlt id="icons" /> Logout</button>
         )
-      }        
+      }    
            
           
            
